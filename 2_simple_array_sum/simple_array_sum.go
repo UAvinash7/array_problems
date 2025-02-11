@@ -1,5 +1,7 @@
 /*
 
+Problem Statement
+
 Given an array of integers, find the sum of its elements.
 
 For example, if the array ar = [1, 2, 3], 1 + 2 + 3 = 6, so return 6.
@@ -37,13 +39,9 @@ Print the sum of the array's elements: 1 + 2 + 3 + 4 + 10 + 11 = 31.
 
 */
 
-// Solution
-
 package main
 
 import "fmt"
-
-
 
 func main() {
 	var n, temp, sum int
@@ -54,6 +52,7 @@ func main() {
 	}
 	fmt.Println(sum)
 }
+
 
 /*
 Run the code by using command `go run simple_array_sum.go`
