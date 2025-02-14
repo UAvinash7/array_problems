@@ -56,3 +56,35 @@ The proportions of occurrence are positive: 3/6 = 0.500000, negative: 2/6 = 0.33
 
 // Solution
 
+package main
+
+import "fmt"
+
+func plusMinus(arr []int32) {
+    // Write your code here
+    var positiveNumber int = 0
+    var zeroNumber int = 0
+    var negativeNumber int = 0
+    var positiveNumberRatio, negativeNumberRatio, zeroNumberRatio float64
+    for i := 0; i < len(arr); i++ {
+        if arr[i] > 0 {
+            positiveNumber++
+        } else if arr[i] < 0 {
+            negativeNumber++
+        } else {
+            zeroNumber++
+        }
+    }
+    positiveNumberRatio = float64(positiveNumber/len(arr))
+    zeroNumberRatio = float64(zeroNumber/len(arr))
+    negativeNumberRatio = float64(negativeNumber/len(arr))
+    fmt.Printf("%.6f\n", positiveNumberRatio)
+    fmt.Printf("%.6f\n", zeroNumberRatio)
+    fmt.Printf("%.6f\n", negativeNumberRatio)
+
+}
+
+func main() {
+	var arr = []int32{1,1,0,-1,-1}
+	plusMinus(arr)
+}
