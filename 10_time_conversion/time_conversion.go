@@ -61,7 +61,7 @@ func timeConversion(s string) string {
 
 	var findAMOrPM string = s[len(s)-2:]	// identifies whether it's AM or PM
 
-	// spliting the format of 12 hours numerical value into hours, minutes and seconds.
+	// spliting the format of 12 hours string value into hours, minutes and seconds.
 	timeFormat := strings.Split(s[:len(s)-2], ":")
 	hh := timeFormat[0]
 	mm := timeFormat[1]
