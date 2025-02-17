@@ -80,7 +80,7 @@ func timeConversion(s string) string {
 		hour = 0
 	}
 	
-	return fmt.Sprintf("%02d:%02d:%02d%s\n", hour, minute, second, findAMOrPM)
+	return fmt.Sprintf("%02d:%02d:%02d\n", hour, minute, second)
 	
 
 }
