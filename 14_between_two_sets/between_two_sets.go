@@ -59,3 +59,12 @@ Explanation
 
 // Solution
 
+package main
+
+func getTotalX() {
+
+}
+
+func main() {
+
+}
