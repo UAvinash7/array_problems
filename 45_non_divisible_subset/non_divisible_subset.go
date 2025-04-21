@@ -53,5 +53,3 @@ Only  will not ever sum to a multiple of .
 
 */
 
-//Solution
-
