@@ -35,8 +35,10 @@ Each of the next T lines contains w.
 Constraints
 
 1 <= T <= 10 ^ 5
-1 <= 
- will contain only letters in the range ascii[a..z].
+1 <= lenghtofw <= 100
+
+w will contain only letters in the range ascii[a..z].
+
 Sample Input 0
 
 5
@@ -45,6 +47,7 @@ bb
 hefg
 dhck
 dkhc
+
 Sample Output 0
 
 ba
@@ -52,6 +55,7 @@ no answer
 hegf
 dhkc
 hcdk
+
 Explanation 0
 
 Test case 1:
@@ -64,6 +68,7 @@ Test case 4:
 dhkc is the next string greater than dhck.
 Test case 5:
 hcdk is the next string greater than dkhc.
+
 Sample Input 1
 
 6
@@ -73,6 +78,7 @@ dcbb
 abdc
 abcd
 fedcbabcd
+
 Sample Output 1
 
 lmon
