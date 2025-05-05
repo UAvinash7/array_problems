@@ -67,3 +67,20 @@ This is the same as the previous case, except this time the starting budget s = 
 */
 
 // Solution
+
+package main
+
+import "fmt"
+
+func main() {
+	avi := "abc\bd"
+	vin := "\a"
+	z, _ := fmt.Println(avi)
+	fmt.Println("z:", z)
+	x, _ :=fmt.Println("vin:", vin)
+	fmt.Println("x:", x)
+	const name, age = "Kim", 22
+	y, _ := fmt.Println(name, "is", age, "years old.")
+	fmt.Println("y:", y)
+
+}
