@@ -37,7 +37,7 @@ Constraints
 
 Sample Input
 
-6 
+6
 
 Sample Output
 
@@ -56,3 +56,22 @@ The staircase is right-aligned, composed of # symbols and spaces, and has a heig
 
 // Solution
 
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Enter the value of n:")
+   var n int
+	fmt.Scanf("%d\n", &n)
+	for i := 0; i < n; i++ {
+      for j := i; j < n - 1; j++ {
+         fmt.Print(" ")
+      }
+      for j := 0; j <= i; j++ {
+         fmt.Print("#")
+      }
+      fmt.Println()
+	}
+   //fmt.Println()
+}
