@@ -57,4 +57,35 @@ Need help to get started? Try the Solve Me First problem.
 
 // Solution
 
- 
+package main
+
+import "fmt"
+
+func main() {
+	var n, temp int
+	var inputArray = make([]int, n)
+	// var n, temp int
+	fmt.Println("Enter the length of input array:")
+	fmt.Scanf("%d\n", &n)
+	//var inputArray = make([]int, n)
+	for i := 0; i < n; i++ {
+		fmt.Printf("Enter the value for %d the element:\n", i)
+		fmt.Scanf("%d\n", &temp)
+		inputArray = append(inputArray, temp)
+	}
+	fmt.Println("Value of inputArray is:", inputArray)
+
+	minimumValue, maximumValue := minMax(inputArray)
+	fmt.Printf("minimum sum value of array is: %d and maximum sum value of array is: %d\n", minimumValue, maximumValue)
+}
+
+func minMax(arr []int) (int, int) {
+var min, max int
+for i := 0; i < len(arr) - 1; i++ {
+	min += arr[i]
+}
+for i := 1; i < len(arr); i++ {
+	max += arr[i]
+}
+return min, max
+}
