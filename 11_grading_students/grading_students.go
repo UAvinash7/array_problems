@@ -70,3 +70,10 @@ Student 4 received a grade below 33, so the grade will not be modified and the s
 
 grade < 40 fail
 0 <= grade <= 100
+
+
+package main
+
+func main() {
+	
+}
