@@ -91,31 +91,51 @@ package main
 
 import "fmt"
 
-func main() {
-	var a [3] int
-	var b [3] int	
-	
-	fmt.Scan(&a[0], &a[1], &a[2])
-	fmt.Scan(&b[0], &b[1], &b[2])
-
-	var aResult, bResult int
-
-	for i := 0; i < 3; i++ {
-		if a[i] > b[i]{
+func compareTriplets(a []int32, b []int32) []int32 {
+	var result []int32
+	var aResult, bResult int32
+	for i := 0; i < len(a); i++ {
+		if a[i] > b[i] {
 			aResult++
-		} else if b[i] > a[i] {
+		} else if a[i] < b[i] {
 			bResult++
 		} else {
 			continue
 		}
 	}
-	fmt.Printf("%d, %d", aResult, bResult)
+	result = append(result, aResult, bResult)
+	return result
+}
+
+func main() {
+	var aArray, bArray []int32
+	var n int
+	//var temp int32
+	fmt.Println("Enter the length of array:")
+	fmt.Scanf("%d\n", &n)
+	for i := 0; i < n; i++ {
+		var temp int32
+		fmt.Printf("Enter the value of aArray's %d th element:\n", i)
+		fmt.Scanf("%d\n", &temp)
+		aArray = append(aArray, temp)
+	}
+	fmt.Println("Elements of aArray is:", aArray)
+	for i := 0; i < n; i++ {
+		var temp int32
+		fmt.Printf("Enter the value of bArray's %d element:\n", i)
+		fmt.Scanf("%d\n", &temp)
+		bArray = append(bArray, temp)
+	}
+	fmt.Println("Elements of bArray is:", bArray)
+
+	compareResult := compareTriplets(aArray, bArray)
+	fmt.Println("Result of comparison of the triplets is:", compareResult)
 }
 
 /*
 
 Run the code by using command `go run compare_the_triplets.go`
-After that enter the value of array variable a and variable b 
+After that enter the value of array variable a and variable b
 And you will get the comparison result of the array variables a and b.
 
 */

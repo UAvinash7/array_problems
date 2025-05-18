@@ -43,19 +43,32 @@ package main
 
 import "fmt"
 
-func main() {
-	var n, temp, sum int
-	fmt.Scanf("%d\n", &n)
-	for i := 0; i < n; i++ {
-		fmt.Scanf("%d\n", &temp)
-		sum += temp
+func simpleSumArray(arr []int) int {
+	var sum int
+	for i := 0; i < len(arr); i++ {
+		sum += arr[i]
 	}
-	fmt.Println(sum)
+	return sum
+}
+
+func main() {
+	var n int
+	fmt.Println("Enter the length of an array:")
+	fmt.Scanf("%d\n", &n)
+	var inputArray []int
+	for i := 0; i < n; i++ {
+		var temp int
+		fmt.Printf("Enter the value of %d th element:\n", i)
+		fmt.Scanf("%d\n", &temp)
+		inputArray = append(inputArray, temp)
+	}
+	fmt.Println("Elements of input array is:", inputArray)
+	fmt.Println("simple array sum value is:", simpleSumArray(inputArray))
 }
 
 
 /*
 Run the code by using command `go run simple_array_sum.go`
-After that enter the value of variable n and hit enter and then followed by the value of array elements
-And you will get the sum of the elements in the array as result i.e., sum variable.
+After that enter the value of length of the array variable n and hit enter and then followed by the value of array elements
+And you will get the complete array elements printed and the sum of the elements in the array as result i.e., sum variable.
 */
