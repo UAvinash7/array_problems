@@ -110,21 +110,20 @@ func compareTriplets(a []int32, b []int32) []int32 {
 func main() {
 	var aArray, bArray []int32
 	var n int
-	//var temp int32
 	fmt.Println("Enter the length of array:")
 	fmt.Scanf("%d\n", &n)
 	for i := 0; i < n; i++ {
-		var temp int32
+		var aTemp int32
 		fmt.Printf("Enter the value of aArray's %d th element:\n", i)
-		fmt.Scanf("%d\n", &temp)
-		aArray = append(aArray, temp)
+		fmt.Scanf("%d\n", &aTemp)
+		aArray = append(aArray, aTemp)
 	}
 	fmt.Println("Elements of aArray is:", aArray)
 	for i := 0; i < n; i++ {
-		var temp int32
+		var bTemp int32
 		fmt.Printf("Enter the value of bArray's %d element:\n", i)
-		fmt.Scanf("%d\n", &temp)
-		bArray = append(bArray, temp)
+		fmt.Scanf("%d\n", &bTemp)
+		bArray = append(bArray, bTemp)
 	}
 	fmt.Println("Elements of bArray is:", bArray)
 

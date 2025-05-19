@@ -33,7 +33,7 @@ Sample Input
 STDIN                                                   Function
 -----                                                   --------
 5                                                       arr[] size n = 5
-1000000001 1000000002 1000000003 1000000004 1000000005  arr[...]  
+1000000001 1000000002 1000000003 1000000004 1000000005  arr[...]
 
 Output
 
@@ -53,16 +53,30 @@ package main
 
 import "fmt"
 
-func main() {
-	var n, temp, sum int64
-	fmt.Scanf("%d\n", &n)
-	for i := int64(0); i < n; i++ {
-		fmt.Scanf("%d\n", &temp)
-		sum += temp
+func aVeryBigSum(arr []int64) int64 {
+	var sum int64
+	for i := 0; i < len(arr); i++ {
+		sum += arr[i]
 	}
-	fmt.Println(sum)
+	return sum
 }
 
+func main() {
+	var n int64
+	var inputArray []int64
+	fmt.Println("Enter the length of the array:")
+	fmt.Scanf("%d\n", &n)
+	//var inputArray []int64
+	for i := int64(0); i < n; i++ {
+		var temp int64
+		fmt.Printf("Enter the value of %d th element:\n", i)
+		fmt.Scanf("%d\n", &temp)
+		inputArray = append(inputArray, temp)
+	}
+	fmt.Println("input array:", inputArray)
+	result := aVeryBigSum(inputArray)
+	fmt.Println("Very Big Sum Of Input Array is:", result)
+}
 
 /*
 

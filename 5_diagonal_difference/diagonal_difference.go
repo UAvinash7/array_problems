@@ -8,7 +8,7 @@ For example, the square matrix  is shown below:
 
 1 2 3
 4 5 6
-9 8 9 
+9 8 9
 
 The left-to-right diagonal = 1 + 5 + 9 = 15.
 The right-to-left diagonal = 3 + 5 + 9 = 17.
@@ -16,7 +16,7 @@ Their absolute difference is | 15 - 17 | = 2.
 
 Function description
 
-Complete the  function with the following parameter:
+Complete the diagonalDifference function with the following parameter:
 
 int arr[n][m]: a 2-D array of integers
 
@@ -74,11 +74,26 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
+func diagonalDifference(arr [][]int32) int32 {
+
+}
+
 func main() {
-	z := math.Abs(-9)
-	fmt.Println(z)
-	fmt.Printf("%T\n", z)
+	var rowSize, columnSize int32
+	var matrix = make([][]int32, rowSize)
+	fmt.Println("Enter the value for number of rows:")
+	fmt.Scanf("%d\n", &rowSize)
+	fmt.Println("Enter the value for number of columns:")
+	fmt.Scanf("%d\n", &columnSize)
+	for i := 0; i < int(rowSize); i++ {
+		var value [][]int32
+		 for j := 0; j < int(columnSize); j++ {
+			fmt.Printf("Enter the value for %d th row and %d th column\n", i, j)
+			fmt.Scanf("%d\n", &value[i][j])
+			matrix = append(matrix, value)
+		 }
+
+	}
 }
