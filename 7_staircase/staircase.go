@@ -60,18 +60,25 @@ package main
 
 import "fmt"
 
-func main() {
-	fmt.Println("Enter the value of n:")
-   var n int
-	fmt.Scanf("%d\n", &n)
-	for i := 0; i < n; i++ {
+func staircase (n int32) {
+   for i := int32(0); i < n; i++ {
       for j := i; j < n - 1; j++ {
          fmt.Print(" ")
       }
-      for j := 0; j <= i; j++ {
+      for j := int32(0); j <= i; j++ {
          fmt.Print("#")
       }
       fmt.Println()
-	}
-   //fmt.Println()
+   }
+}
+
+func main() {
+	var inputNumber int32
+   fmt.Print("Enter the value of inputNumber: ")
+   fmt.Scanf("%d\n", &inputNumber)
+   if inputNumber <= 0 {
+      fmt.Print("input number should not be less than or equal to zero")
+      return
+   }
+   staircase(inputNumber)
 }

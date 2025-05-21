@@ -75,16 +75,27 @@ func plusMinus(arr []int32) {
             zeroNumber++
         }
     }
-    positiveNumberRatio = float64(positiveNumber/len(arr))
-    zeroNumberRatio = float64(zeroNumber/len(arr))
-    negativeNumberRatio = float64(negativeNumber/len(arr))
+    positiveNumberRatio = float64(positiveNumber)/float64(len(arr))
+    zeroNumberRatio = float64(zeroNumber)/float64(len(arr))
+    negativeNumberRatio = float64(negativeNumber)/float64(len(arr))
     fmt.Printf("%.6f\n", positiveNumberRatio)
-    fmt.Printf("%.6f\n", zeroNumberRatio)
     fmt.Printf("%.6f\n", negativeNumberRatio)
-
+    fmt.Printf("%.6f\n", zeroNumberRatio)
 }
 
 func main() {
-	var arr = []int32{1,1,0,-1,-1}
-	plusMinus(arr)
+	var size int
+    fmt.Print("Enter the size value: ")
+    fmt.Scanf("%d\n", &size)
+    if size <= 0 {
+        fmt.Print("Size value cannot be zero or less than zero\n")
+        return
+    }
+    var inputArray = make([]int32, size)
+    for i := 0; i < size; i++ {
+        fmt.Printf("Enter the value of %d th element: ", i)
+        fmt.Scanf("%d\n", &inputArray[i])
+    }
+    fmt.Println("user input array: ", inputArray)
+	plusMinus(inputArray)
 }

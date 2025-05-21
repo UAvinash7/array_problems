@@ -62,24 +62,25 @@ package main
 import "fmt"
 
 func main() {
-	var n, temp int
-	var inputArray = make([]int, n)
-	// var n, temp int
-	fmt.Println("Enter the length of input array:")
-	fmt.Scanf("%d\n", &n)
-	//var inputArray = make([]int, n)
-	for i := 0; i < n; i++ {
-		fmt.Printf("Enter the value for %d the element:\n", i)
-		fmt.Scanf("%d\n", &temp)
-		inputArray = append(inputArray, temp)
+	var size int
+	fmt.Print("Enter the size of the array: ")
+	fmt.Scanf("%d\n", &size)
+	if size <= 0 {
+		fmt.Print("Value of size should not be less than or equal to 0")
+		return
+	}
+	var inputArray = make([]int, size)
+	for i := 0; i < size; i++ {
+		fmt.Printf("Enter the value for %d th element: \n ", i)
+		fmt.Scanf("%d\n", &inputArray[i])
 	}
 	fmt.Println("Value of inputArray is:", inputArray)
 
-	minimumValue, maximumValue := minMax(inputArray)
+	minimumValue, maximumValue := minMaxSum(inputArray)
 	fmt.Printf("minimum sum value of array is: %d and maximum sum value of array is: %d\n", minimumValue, maximumValue)
 }
 
-func minMax(arr []int) (int, int) {
+func minMaxSum(arr []int) (int, int) {
 var min, max int
 for i := 0; i < len(arr) - 1; i++ {
 	min += arr[i]

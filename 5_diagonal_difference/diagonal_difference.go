@@ -74,26 +74,41 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 func diagonalDifference(arr [][]int32) int32 {
+	var differenceResult, resultLeftToRight, resultRightToLeft int32
+	for i := 0; i < len(arr); i++ {
+		for j := 0; j < len(arr); j++ {
+			if i  == j {
+				resultLeftToRight += arr[i][j]
+			}
+			if i + j == len(arr)-1 {
+				resultRightToLeft += arr[i][j]
+			}
+		}
+	}
+	differenceResult = int32(math.Abs(float64(resultLeftToRight) - float64(resultRightToLeft)))
+	return differenceResult
 
 }
 
 func main() {
-	var rowSize, columnSize int32
-	var matrix = make([][]int32, rowSize)
-	fmt.Println("Enter the value for number of rows:")
-	fmt.Scanf("%d\n", &rowSize)
-	fmt.Println("Enter the value for number of columns:")
-	fmt.Scanf("%d\n", &columnSize)
-	for i := 0; i < int(rowSize); i++ {
-		var value [][]int32
-		 for j := 0; j < int(columnSize); j++ {
-			fmt.Printf("Enter the value for %d th row and %d th column\n", i, j)
-			fmt.Scanf("%d\n", &value[i][j])
-			matrix = append(matrix, value)
-		 }
-
+	var rows, cols int32
+	fmt.Print("Enter the number of rows: ")
+	fmt.Scanf("%d\n", &rows)
+	fmt.Printf("Enter the number of columns: ")
+	fmt.Scanf("%d\n", &cols)
+	var matrix = make([][]int32, rows)
+	for i := int32(0); i < rows; i++ {
+		matrix[i] = make([]int32, cols)
+		for j := int32(0); j < cols; j++ {
+			fmt.Printf("Enter the value of matrix[%d][%d] element: ", i, j)
+			fmt.Scanf("%d\n", &matrix[i][j])
+		}
 	}
+	fmt.Println("matrix:", matrix)
+	result := diagonalDifference(matrix)
+	fmt.Println("diagonal difference: ", result)
 }
