@@ -59,7 +59,29 @@ Need help to get started? Try the Solve Me First problem.
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
+func minMaxSum(arr []int32) {
+	// let's first sort the input array is ascending order
+	for i := 0; i < len(arr)-1; i++ {
+		for j := 0; j < len(arr)-1; j++ {
+			if arr[j] > arr[j+1] {
+				arr[j], arr[j+1] = arr[j+1], arr[j]
+			}
+		}
+	}
+	fmt.Println("sorted input array:", arr)
+	var min, max int64
+	for i := 0; i < len(arr)-1; i++ {
+		min += int64(arr[i])
+	}
+	for i := 1; i < len(arr); i++ {
+		max += int64(arr[i])
+	}
+	fmt.Println(min, max)
+}
 
 func main() {
 	var size int
@@ -69,24 +91,12 @@ func main() {
 		fmt.Print("Value of size should not be less than or equal to 0")
 		return
 	}
-	var inputArray = make([]int, size)
+	var inputArray = make([]int32, size)
 	for i := 0; i < size; i++ {
 		fmt.Printf("Enter the value for %d th element: \n ", i)
 		fmt.Scanf("%d\n", &inputArray[i])
 	}
 	fmt.Println("Value of inputArray is:", inputArray)
 
-	minimumValue, maximumValue := minMaxSum(inputArray)
-	fmt.Printf("minimum sum value of array is: %d and maximum sum value of array is: %d\n", minimumValue, maximumValue)
-}
-
-func minMaxSum(arr []int) (int, int) {
-var min, max int
-for i := 0; i < len(arr) - 1; i++ {
-	min += arr[i]
-}
-for i := 1; i < len(arr); i++ {
-	max += arr[i]
-}
-return min, max
+	minMaxSum(inputArray)
 }

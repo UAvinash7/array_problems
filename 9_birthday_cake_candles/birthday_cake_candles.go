@@ -46,6 +46,37 @@ Candle heights are [3, 2, 1, 3]. The tallest candles are 3 units, and there are 
 
 package main
 
-func main() {
+import "fmt"
 
+func birthdayCakeCandles(candles []int32) int32 {
+	var max, count int32
+	for i := 0; i < len(candles); i++ {
+		if max < candles[i] {
+			max = candles[i]
+		}
+	}
+	for i := 0; i < len(candles); i++ {
+		if max == candles[i] {
+			count++
+		}
+	}
+	return count
+}
+
+func main() {
+	var size int
+	fmt.Print("Enter the size of the array: ")
+	fmt.Scanf("%d\n", &size)
+	if size <= 0 {
+		fmt.Print("Size cannot be less than or equal to zero")
+		return
+	}
+	var inputArray = make([]int32, size)
+	for i:= 0; i < size; i++ {
+		fmt.Printf("Enter the value of %d th element: \n", i)
+		fmt.Scanf("%d\n", &inputArray[i])
+	}
+	fmt.Println("Input Array:", inputArray)
+	numberOfTallestCandles := birthdayCakeCandles(inputArray)
+	fmt.Println("Number of tallest candles: ", numberOfTallestCandles)
 }
