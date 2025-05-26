@@ -71,9 +71,38 @@ Student 4 received a grade below 33, so the grade will not be modified and the s
 // grade < 40 fail
 // 0 <= grade <= 100
 
-
 package main
 
+import "fmt"
+
+func gradingStudents(grades []int32) []int32 {
+	var result []int32
+	for i := 0; i < len(grades); i++ {
+		if grades[i] < 38 {
+			result = append(result, grades[i])
+		} else if grades[i]%5 > 2 {
+			result = append(result, (((grades[i] / 5) + 1) * 5))
+		} else {
+			result = append(result, grades[i])
+		}
+	}
+	return result
+}
+
 func main() {
-	
+	var size int
+	fmt.Print("Enter the value of size: ")
+	fmt.Scanf("%d\n", &size)
+	if size <= 0 {
+		fmt.Print("The value of size should be greater than zero\n")
+		return
+	}
+	var inputArray = make([]int32, size)
+	for i := 0; i < size; i++ {
+		fmt.Printf("Enter the value of %d th element: ", i)
+		fmt.Scanf("%d\n", &inputArray[i])
+	}
+	fmt.Println("Input Array:", inputArray)
+	res := gradingStudents(inputArray)
+	fmt.Println("res:", res)
 }

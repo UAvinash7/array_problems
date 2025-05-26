@@ -45,59 +45,66 @@ Sample Output 0
 
 */
 
-
 // Solution
+
 
 package main
 
 import (
 	"fmt"
-	"strings"
 	"strconv"
+	"strings"
 )
 
 func timeConversion(s string) string {
-	//format of string input HH:MM:SSAM or HH:MM:SSPM i.e., Hour:Minute:SecondAM/PM
-
-	var findAMOrPM string = s[len(s)-2:]	// identifies whether it's AM or PM
-
+	//format of string input s = HH:MM:SSAM or HH:MM:SSPM i.e., Hour:Minute:SecondAM/PM
+	
+	var findAM_OR_PM, hour, minute, second string
+	var inputString []string
+	var hh, mm, ss int
+	findAM_OR_PM = s[len(s)-2:]		// identifies whether it's AM or PM
+	
 	// spliting the format of 12 hours string value into hours, minutes and seconds.
-	timeFormat := strings.Split(s[:len(s)-2], ":")
-	hh := timeFormat[0]
-	mm := timeFormat[1]
-	ss := timeFormat[2]
-
+	inputString = strings.Split(s[:len(s)-2], ":")
+	hour = inputString[0]
+	minute = inputString[1]
+	second = inputString[2]
+	
 	// converting the value of hour, minute and second variable from string into integer
-	hour, _ := strconv.Atoi(hh)
-	minute, _ := strconv.Atoi(mm)
-	second, _ := strconv.Atoi(ss)
+	hh, _ = strconv.Atoi(hour)
+	mm, _ = strconv.Atoi(minute)
+	ss, _ = strconv.Atoi(second)
 
-	if hour < 12 && findAMOrPM == "PM" {
-		hour += 12
+	if hh < 12 && findAM_OR_PM == "PM" {
+		hh = hh + 12
 	}
-
-	if hour == 12 && findAMOrPM == "AM" {
-		hour = 0
+	if hh == 12 && findAM_OR_PM == "AM" {
+		hh = 0
 	}
-	
-	return fmt.Sprintf("%02d:%02d:%02d\n", hour, minute, second)
-	
-
+	return fmt.Sprintf("%02d:%02d:%02d", hh, mm, ss)
 }
 
 func main() {
+	var testString1 = "07:05:45PM"
+	fmt.Printf("time conversion of %s in 24 hour format is: %s\n", testString1, timeConversion(testString1))
+	var testString2 = "12:40:22AM"
+	fmt.Printf("time conversion of %s in 24 hour format is: %s\n", testString2, timeConversion(testString2))
+	var testString3 = "06:40:03AM"
+	fmt.Printf("time conversion of %s in 24 hour format is: %s\n", testString3, timeConversion(testString3))
+	var testString4 = "12:05:39AM"
+	fmt.Printf("time conversion of %s in 24 hour format is: %s\n", testString4, timeConversion(testString4))
+	var testString5 = "12:45:54PM"
+	fmt.Printf("time conversion of %s in 24 hour format is: %s\n", testString5, timeConversion(testString5))
+	var testString6 = "02:34:50PM"
+	fmt.Printf("time conversion of %s in 24 hour format is: %s\n", testString6, timeConversion(testString6))
+	var testString7 = "04:59:59AM"
+	fmt.Printf("time conversion of %s in 24 hour format is: %s\n", testString7, timeConversion(testString7))
+	var testString8 = "04:59:59PM"
+	fmt.Printf("time conversion of %s in 24 hour format is: %s\n", testString8, timeConversion(testString8))
+	var testString9 = "12:00:00AM"
+	fmt.Printf("time conversion of %s in 24 hour format is: %s\n", testString9, timeConversion(testString9))
+	var testString10 = "11:59:59PM"
+	fmt.Printf("time conversion of %s in 24 hour format is: %s\n", testString10, timeConversion(testString10))
+
 	
-	// 12 hour format input
-	var str1 string = "07:05:45AM"
-	var str2 string = "07:05:45PM"
-	var str3 string = "12:05:59AM"
-	var str4 string = "13:41:54PM"
- 
-	// we will get 24 hour military format output
-	fmt.Println(timeConversion(str1))
-	fmt.Println(timeConversion(str2))
-	fmt.Println(timeConversion(str3))
-	fmt.Println(timeConversion(str4))
-
-
 }

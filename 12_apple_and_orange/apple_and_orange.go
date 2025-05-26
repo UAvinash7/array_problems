@@ -10,7 +10,7 @@ The red region denotes the house, where s is the start point, and t is the endpo
 
 Assume the trees are located on a single point, where the apple tree is at point a, and the orange tree is at point b.
 
-When a fruit falls from its tree, it lands d units of distance from its tree of origin along the x-axis. 
+When a fruit falls from its tree, it lands d units of distance from its tree of origin along the x-axis.
 
 * A negative value of d means the fruit fell d units to the tree's left, and a positive value of d means it falls d units to the tree's right. *
 
@@ -81,3 +81,51 @@ Only the second orange falls within the region between 7 and 11, so we print 1 a
 
 // Solution
 
+package main
+
+import "fmt"
+
+func countApplesAndOranges(s int32, t int32, a int32, b int32, apples []int32, oranges []int32) {
+	var appleCount, orangeCount int
+	for i := 0; i < len(apples); i++ {
+		if a + apples[i] >= s && a + apples[i] <= t {
+			appleCount++
+		}
+	}
+	for i := 0; i < len(oranges); i++ {
+		if b + oranges[i] >= s && b + oranges[i] <= t{
+			orangeCount++
+		}
+	}
+	fmt.Println("Number of Apple's that land on Sam's house is: ", appleCount)
+	fmt.Println("Number of Orange's that land on Sam's house is: ", orangeCount)
+}
+
+func main() {
+	var s, t, a, b, m, n int32
+	fmt.Print("Enter the value of s: ")
+	fmt.Scanf("%d\n", &s)
+	fmt.Print("Enter the value of t: ")
+	fmt.Scanf("%d\n", &t)
+	fmt.Print("Enter the value of a: ")
+	fmt.Scanf("%d\n", &a)
+	fmt.Print("Enter the value of b: ")
+	fmt.Scanf("%d\n", &b)
+	fmt.Print("Enter the value of m: ")
+	fmt.Scanf("%d\n", &m)
+	fmt.Print("Enter the value of n: ")
+	fmt.Scanf("%d\n", &n)
+	var apples = make([]int32, m)
+	for i := 0; i < len(apples); i++ {
+		fmt.Printf("Enter the value of %d th apple element: ", i)
+		fmt.Scanf("%d\n", &apples[i])
+	}
+	fmt.Println("Input Apple Values: ", apples)
+	var oranges = make([]int32, n)
+	for  i := 0; i < len(oranges); i++ {
+		fmt.Printf("Enter the value of %d th orange element: ", i)
+		fmt.Scanf("%d\n", &oranges[i])
+	}
+	fmt.Println("Input Orange Values: ", oranges)
+	countApplesAndOranges(s, t, a, b, apples, oranges)
+}
