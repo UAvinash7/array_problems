@@ -69,17 +69,23 @@ package main
 import "fmt"
 
 func kangaroo(x1 int32,  v1 int32, x2 int32, v2 int32) string {
-	var result string
-	for x2 > x1 {
-		if v1 <= v2 {
-			result = "NO"
-		} else if (x2 - x1) % (v1 - v2) == 0 {
-				result = "YES"
-		} else {
-				result = "NO"
-		}
+	for x1 > x2 {
+		return findResult(x1, v1, x2, v2)
 	}
-	return result
+	return findResult(x2, v2, x1, v1)
+}
+
+func findResult (x1, v1, x2, v2 int32) string {
+	for x1 > x2 {
+		x1 = x1 + v1
+		x2 = x2 + v2
+		if x1 == x2 {
+			return "YES"
+		}
+		fmt.Println("value of x1:", x1)
+		fmt.Println("value of x2:", x2)
+	}
+	return "NO"
 }
 
 func main() {
@@ -93,5 +99,41 @@ func main() {
 	fmt.Print("Enter the value of v2: ")
 	fmt.Scanf("%d\n", &v2)
 	result := kangaroo(x1, v1, x2, v2)
-	fmt.Print("result", result)
+	fmt.Print("result: ", result)
 }
+
+
+
+// Another Solution
+
+/*
+
+package main
+
+import "fmt"
+
+func kangaroo(x1 int32, v1 int32, x2 int32, v2 int32) string {
+	if v1 <= v2 {
+		return "NO"
+	} else if (x2 - x1) % (v1 - v2) == 0 {
+		return "YES"
+	} else {
+		return "NO"
+	}
+}
+
+func main() {
+	var x1, v1, x2, v2 int32
+	fmt.Print("Enter the value of x1: ")
+	fmt.Scanf("%d\n", &x1)
+	fmt.Print("Enter the value of v1: ")
+	fmt.Scanf("%d\n", &v1)
+	fmt.Print("Enter the value of x2: ")
+	fmt.Scanf("%d\n", &x2)
+	fmt.Print("Enter the value of v2: ")
+	fmt.Scanf("%d\n", &v2)
+	result := kangaroo(x1, v1, x2, v2)
+	fmt.Println("result:", result)
+}
+
+*/
