@@ -55,6 +55,10 @@ func main() {
 	var n int
 	fmt.Println("Enter the length of an array:")
 	fmt.Scanf("%d\n", &n)
+	if n <= 0 {
+		fmt.Print("Length of array should be greater than zero\n")
+		return
+	}
 	var inputArray []int
 	for i := 0; i < n; i++ {
 		var temp int

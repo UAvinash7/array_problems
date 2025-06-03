@@ -112,6 +112,10 @@ func main() {
 	var n int
 	fmt.Println("Enter the length of array:")
 	fmt.Scanf("%d\n", &n)
+	if n <= 0 {
+		fmt.Print("Length of array should be greater than zero\n")
+		return
+	}
 	for i := 0; i < n; i++ {
 		var aTemp int32
 		fmt.Printf("Enter the value of aArray's %d th element:\n", i)

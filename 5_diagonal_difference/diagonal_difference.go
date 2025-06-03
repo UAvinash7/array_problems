@@ -98,8 +98,16 @@ func main() {
 	var rows, cols int32
 	fmt.Print("Enter the number of rows: ")
 	fmt.Scanf("%d\n", &rows)
+	if rows <= 0 {
+		fmt.Print("Number of row should be greater than zero\n")
+		return
+	}
 	fmt.Printf("Enter the number of columns: ")
 	fmt.Scanf("%d\n", &cols)
+	if cols <= 0 {
+		fmt.Print("Number of columns should be greater than zero\n")
+		return
+	}
 	var matrix = make([][]int32, rows)
 	for i := int32(0); i < rows; i++ {
 		matrix[i] = make([]int32, cols)

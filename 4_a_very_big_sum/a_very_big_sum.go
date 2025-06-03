@@ -63,10 +63,13 @@ func aVeryBigSum(arr []int64) int64 {
 
 func main() {
 	var n int64
-	var inputArray []int64
 	fmt.Println("Enter the length of the array:")
 	fmt.Scanf("%d\n", &n)
-	//var inputArray []int64
+	if n <= 0 {
+		fmt.Print("Length of array should be greater than zero\n")
+		return
+	}
+	var inputArray []int64
 	for i := int64(0); i < n; i++ {
 		var temp int64
 		fmt.Printf("Enter the value of %d th element:\n", i)
