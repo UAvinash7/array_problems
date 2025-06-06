@@ -105,3 +105,9 @@ Lily only wants to give Ron m = 1 square of chocolate with an integer value of d
 // Solution
 
 
+package main
+
+func birthday() {}
+
+func main() {}
+
