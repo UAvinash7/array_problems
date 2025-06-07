@@ -57,5 +57,9 @@ Here are the 5 valid pairs when k = 3:
 
 // Solution
 
+package main
 
+func main() {
+	
+}
  
