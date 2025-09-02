@@ -109,9 +109,3 @@ Return the minimum value, 0.
 
 // Solution.
 
-
-package main
-
-func main() {
-	
-}
