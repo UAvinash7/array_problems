@@ -23,7 +23,7 @@ p = 3
 |		|		|	  	|		|		|	  	|		|		|
 |		|	1	|	->	|	2	|	3	|	->	|	4	|	5	|
 |_______|_______|	  	|_______|_______|	  	|_______|_______|
-					  		
+
 Using the diagram above, if the student wants to get to page 3, they open the book to page 1, flip 1 page and they are on the correct page. If they open the book to the last page, page 5, they turn 1 page and are at the correct page. Return 1.
 
 Function Description
@@ -98,19 +98,13 @@ If the student starts turning from page 1, they need to turn 2 pages:
 
 If they start turning from page 5, they do not need to turn any pages:
 
- _______ _______	  
-|		|		|	  
-|	4	|	5	|	
-|_______|_______|	  	
+ _______ _______
+|		|		|
+|	4	|	5	|
+|_______|_______|
 
 Return the minimum value, 0.
 
 */
 
 // Solution.
-
-package main
-
-func main() {
-	
-}

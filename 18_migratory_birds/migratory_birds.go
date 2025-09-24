@@ -77,8 +77,3 @@ Two types have a frequency of 3, and the lower of those is type 3.
 // Solution
 
 
-package main
-
-func main () {
-	
-}
