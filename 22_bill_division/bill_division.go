@@ -67,3 +67,44 @@ Anna didn't eat item bill[1], but she shared the rest of the items with Brian. T
 
 // Solution
 
+package main
+
+import (
+	"fmt"
+)
+
+func bonAppetit(bill []int32, k int32, b int32) {
+	// Calculate the sum of the bill excluding the item Anna didn't eat (at index k)
+	var totalBill int32
+	for i, itemPrice := range bill {
+		if int32(i) != k {
+			totalBill += itemPrice
+		}
+	}
+
+	// Calculate Anna's fair share
+	annaFairShare := totalBill / 2
+
+	// Check if Brian overcharged Anna
+	if annaFairShare == b {
+		fmt.Println("Bon Appetit")
+	} else {
+		fmt.Println(b - annaFairShare)
+	}
+}
+
+func main() {
+	// Example usage:
+	// bill := []int32{3, 10, 2, 9}
+	// k := int32(1) // Anna didn't eat the item at index 1 (price 10)
+	// b := int32(12) // Brian charged Anna 12
+
+	// bonAppetit(bill, k, b) // Expected output: 5 (12 - 7)
+
+	// Another example:
+	// bill2 := []int32{7, 3, 8}
+	// k2 := int32(0) // Anna didn't eat the item at index 0 (price 7)
+	// b2 := int32(5) // Brian charged Anna 5
+
+	// bonAppetit(bill2, k2, b2) // Expected output: Bon Appetit (5 == 5)
+}
