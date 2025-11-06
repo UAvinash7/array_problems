@@ -70,3 +70,67 @@ There is no way to buy one keyboard and one USB drive because 4 + 5 > 5, so retu
 
 // Solution
 
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func getMoneySpent(keyboards []int, drives []int, b int) int {
+	maxMoneySpent := -1
+
+	// Sort keyboards in ascending order to optimize the search
+	sort.Ints(keyboards)
+	// Sort drives in ascending order to optimize the search
+	sort.Ints(drives)
+
+	// Iterate through each keyboard price
+	for _, keyboardPrice := range keyboards {
+		// Iterate through each drive price
+		for _, drivePrice := range drives {
+			totalPrice := keyboardPrice + drivePrice
+
+			// If the total price exceeds the budget, move to the next keyboard
+			// (since both arrays are sorted, further drive prices with this keyboard
+			// will also exceed the budget)
+			if totalPrice > b {
+				break
+			}
+
+			// If the total price is within budget and greater than the current max, update maxMoneySpent
+			if totalPrice > maxMoneySpent {
+				maxMoneySpent = totalPrice
+			}
+		}
+	}
+
+	return maxMoneySpent
+}
+
+func main() {
+	// Example usage:
+	// b: budget
+	// keyboards: array of keyboard prices
+	// drives: array of drive prices
+	b := 60
+	keyboards := []int{40, 50, 60}
+	drives := []int{5, 8, 12}
+
+	result := getMoneySpent(keyboards, drives, b)
+	fmt.Println(result) // Output: 58
+
+	b2 := 10
+	keyboards2 := []int{3, 1}
+	drives2 := []int{5, 2, 8}
+
+	result2 := getMoneySpent(keyboards2, drives2, b2)
+	fmt.Println(result2) // Output: 8
+
+	b3 := 5
+	keyboards3 := []int{4}
+	drives3 := []int{5}
+
+	result3 := getMoneySpent(keyboards3, drives3, b3)
+	fmt.Println(result3) // Output: -1
+}
