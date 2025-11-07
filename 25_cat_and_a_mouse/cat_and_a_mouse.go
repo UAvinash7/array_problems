@@ -75,3 +75,30 @@ Because the mouse escapes, we print Mouse C on a new line.
 
 // Solution
 
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+// catAndMouse determines which cat reaches the mouse first or if the mouse escapes.
+func catAndMouse(x, y, z int32) string {
+	distA := math.Abs(float64(z - x)) // Distance of Cat A from Mouse
+	distB := math.Abs(float64(z - y)) // Distance of Cat B from Mouse
+
+	if distA < distB {
+		return "Cat A"
+	} else if distB < distA {
+		return "Cat B"
+	} else {
+		return "Mouse C"
+	}
+}
+
+func main() {
+	// Example usage:
+	// x, y, z represent positions of Cat A, Cat B, and Mouse C respectively.
+	fmt.Println(catAndMouse(1, 2, 3)) // Cat B
+	fmt.Println(catAndMouse(1, 3, 2)) // Mouse C
+}
