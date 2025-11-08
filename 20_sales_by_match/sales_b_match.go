@@ -54,3 +54,32 @@ There are three pairs of socks.
 
 // Solution
 
+package main
+
+import "fmt"
+
+func sockMerchant(n int32, ar []int32) int32 {
+    // Create a map to store the frequency of each sock color
+    sockCounts := make(map[int32]int32)
+
+    // Iterate through the array of sock colors and count their frequencies
+    for _, color := range ar {
+        sockCounts[color]++
+    }
+
+    var pairs int32 = 0
+    // Iterate through the sock counts and calculate the number of pairs
+    for _, count := range sockCounts {
+        pairs += count / 2 // Each pair requires two socks of the same color
+    }
+
+    return pairs
+}
+
+func main() {
+    // Example usage:
+    n := int32(9)
+    ar := []int32{10, 20, 20, 10, 10, 30, 50, 10, 20}
+    result := sockMerchant(n, ar)
+    fmt.Println(result) // Expected output: 3
+}
