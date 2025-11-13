@@ -83,3 +83,51 @@ then the total cost will be 1 + 1 + 2 = 4.
 
 // Solution
 
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+// formingMagicSquare calculates the minimum cost to convert a given 3x3 matrix into a magic square.
+func formingMagicSquare(s [][]int) int {
+	// All 8 possible 3x3 magic squares
+	magicSquares := [][][]int{
+		{{8, 1, 6}, {3, 5, 7}, {4, 9, 2}},
+		{{6, 1, 8}, {7, 5, 3}, {2, 9, 4}},
+		{{4, 9, 2}, {3, 5, 7}, {8, 1, 6}},
+		{{2, 9, 4}, {7, 5, 3}, {6, 1, 8}},
+		{{8, 3, 4}, {1, 5, 9}, {6, 7, 2}},
+		{{4, 3, 8}, {9, 5, 1}, {2, 7, 6}},
+		{{6, 7, 2}, {1, 5, 9}, {8, 3, 4}},
+		{{2, 7, 6}, {9, 5, 1}, {4, 3, 8}},
+	}
+
+	minCost := math.MaxInt32
+
+	for _, magicSquare := range magicSquares {
+		currentCost := 0
+		for i := 0; i < 3; i++ {
+			for j := 0; j < 3; j++ {
+				currentCost += int(math.Abs(float64(s[i][j] - magicSquare[i][j])))
+			}
+		}
+		if currentCost < minCost {
+			minCost = currentCost
+		}
+	}
+
+	return minCost
+}
+
+func main() {
+	// Example usage:
+	s := [][]int{
+		{5, 3, 4},
+		{1, 5, 8},
+		{6, 4, 2},
+	}
+	result := formingMagicSquare(s)
+	fmt.Println(result) // Expected output: 7
+}
