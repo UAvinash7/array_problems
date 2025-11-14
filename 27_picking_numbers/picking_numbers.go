@@ -64,3 +64,48 @@ We choose the following multiset of integers from the array: {1, 2, 2, 1, 2}. Ea
 
 // Solution
 
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func pickingNumbers(a []int) int {
+	// Create a frequency map for the numbers
+	freqMap := make(map[int]int)
+	for _, num := range a {
+		freqMap[num]++
+	}
+
+	maxLength := 0
+
+	// Iterate through the numbers in the frequency map
+	// We sort the keys to ensure we consider consecutive numbers correctly
+	keys := make([]int, 0, len(freqMap))
+	for k := range freqMap {
+		keys = append(keys, k)
+	}
+	sort.Ints(keys)
+
+	for _, num := range keys {
+		// Calculate the length of the subarray containing 'num' and 'num+1'
+		currentLength := freqMap[num] + freqMap[num+1] // freqMap[num+1] will be 0 if num+1 doesn't exist
+
+		// Update maxLength if currentLength is greater
+		if currentLength > maxLength {
+			maxLength = currentLength
+		}
+	}
+
+	return maxLength
+}
+
+func main() {
+	// Example usage
+	arr1 := []int{4, 6, 5, 3, 3, 1}
+	fmt.Println(pickingNumbers(arr1)) // Output: 3 (from [3, 3, 4] or [4, 5])
+
+	arr2 := []int{1, 2, 2, 3, 1, 2}
+	fmt.Println(pickingNumbers(arr2)) // Output: 5 (from [1, 1, 2, 2, 2])
+}
