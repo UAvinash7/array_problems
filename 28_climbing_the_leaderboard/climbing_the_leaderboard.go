@@ -148,3 +148,45 @@ Sample Output 2
 
 // Solution
 
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func climbingLeaderboard(ranked []int32, player []int32) []int32 {
+	// 1. Process ranked scores to get distinct, sorted ranks
+	distinctRanked := []int32{}
+	if len(ranked) > 0 {
+		distinctRanked = append(distinctRanked, ranked[0])
+		for i := 1; i < len(ranked); i++ {
+			if ranked[i] != ranked[i-1] {
+				distinctRanked = append(distinctRanked, ranked[i])
+			}
+		}
+	}
+
+	// 2. Determine Alice's ranks
+	aliceRanks := make([]int32, len(player))
+	rankedIndex := len(distinctRanked) - 1 // Start from the lowest rank
+
+	for i := 0; i < len(player); i++ {
+		for rankedIndex >= 0 && player[i] >= distinctRanked[rankedIndex] {
+			rankedIndex-- // Alice moves up the leaderboard
+		}
+		aliceRanks[i] = int32(rankedIndex + 2) // Calculate rank (1-based index)
+		if rankedIndex < 0 { // Alice is higher than the highest ranked score
+			aliceRanks[i] = 1
+		}
+	}
+
+	return aliceRanks
+}
+
+func main() {
+	ranked := []int32{100, 90, 90, 80, 75, 60}
+	player := []int32{50, 65, 77, 90, 102}
+	result := climbingLeaderboard(ranked, player)
+	fmt.Println(result) // Expected: [6 5 4 2 1]
+}
