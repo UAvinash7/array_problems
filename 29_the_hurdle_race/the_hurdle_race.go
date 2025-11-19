@@ -69,3 +69,39 @@ Because he can already jump all the hurdles, Dan needs to drink 0 doses.
 
 // Solution
 
+package main
+
+import (
+	"fmt"
+	"sort" // Or manually find max
+)
+
+func hurdleRace(k int32, height []int32) int32 {
+	// Find the maximum hurdle height
+	var maxHurdle int32 = 0
+	for _, h := range height {
+		if h > maxHurdle {
+			maxHurdle = h
+		}
+	}
+
+	// Calculate needed doses
+	if maxHurdle > k {
+		return maxHurdle - k
+	} else {
+		return 0
+	}
+}
+
+func main() {
+	// Example usage:
+	k := int32(4)
+	height := []int32{1, 6, 3, 5, 2}
+	result := hurdleRace(k, height)
+	fmt.Println(result) // Output: 2
+
+	k2 := int32(7)
+	height2 := []int32{2, 5, 4, 5, 2}
+	result2 := hurdleRace(k2, height2)
+	fmt.Println(result2) // Output: 0
+}
