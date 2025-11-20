@@ -82,3 +82,32 @@ The tallest letter in zaba is z at 7 mm. The selection area for this word is 4 *
 
 // Solution
 
+package main
+
+import (
+	"fmt"
+)
+
+// designerPdfViewer calculates the area of the highlighted word.
+func designerPdfViewer(h []int32, word string) int32 {
+	maxHeight := int32(0)
+	for _, char := range word {
+		// Calculate the index for the height array (0 for 'a', 1 for 'b', etc.)
+		index := char - 'a'
+		if h[index] > maxHeight {
+			maxHeight = h[index]
+		}
+	}
+	// Area is maxHeight * number of characters in the word
+	return maxHeight * int33(len(word))
+}
+
+func main() {
+	// Example usage:
+	// Heights of 'a' through 'z'
+	heights := []int32{1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7}
+	word := "zebra"
+
+	result := designerPdfViewer(heights, word)
+	fmt.Println(result) // Expected output: 28 (tallest char 'z' has height 7, word length 5, so 7*4=28)
+}
