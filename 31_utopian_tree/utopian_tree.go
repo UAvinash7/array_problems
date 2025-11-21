@@ -65,3 +65,32 @@ In the third case (n = 4), the tree doubles its height in spring (n = 1, H = 2),
 
 // Solution
 
+package main
+
+import "fmt"
+
+// utopianTree calculates the height of the Utopian Tree after n cycles.
+func utopianTree(n int32) int32 {
+    height := int32(1) // Initial height
+
+    for i := int32(0); i < n; i++ {
+        if i%2 == 0 {
+            // Spring cycle: height doubles
+            height *= 2
+        } else {
+            // Summer cycle: height increases by 1
+            height += 1
+        }
+    }
+    return height
+}
+
+func main() {
+    // Example usage:
+    fmt.Println("Height after 0 cycles:", utopianTree(0)) // Expected: 1
+    fmt.Println("Height after 1 cycle:", utopianTree(1)) // Expected: 2
+    fmt.Println("Height after 2 cycles:", utopianTree(2)) // Expected: 3
+    fmt.Println("Height after 3 cycles:", utopianTree(3)) // Expected: 6
+    fmt.Println("Height after 4 cycles:", utopianTree(4)) // Expected: 7
+    fmt.Println("Height after 5 cycles:", utopianTree(5)) // Expected: 14
+}
