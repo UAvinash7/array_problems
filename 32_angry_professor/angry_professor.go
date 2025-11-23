@@ -69,3 +69,41 @@ For the second test case, k = 2. The professor wants at least 2 students in atte
 
 // Solution
 
+package main
+
+import (
+	"fmt"
+)
+
+func angryProfessor(k int, a []int) string {
+	onTimeStudents := 0
+	for _, arrivalTime := range a {
+		if arrivalTime <= 0 {
+			onTimeStudents++
+		}
+	}
+
+	if onTimeStudents >= k {
+		return "NO" // Class is not canceled
+	} else {
+		return "YES" // Class is canceled
+	}
+}
+
+func main() {
+	var t int
+	fmt.Scan(&t) // Read number of test cases
+
+	for i := 0; i < t; i++ {
+		var n, k int
+		fmt.Scan(&n, &k) // Read n and k
+
+		a := make([]int, n)
+		for j := 0; j < n; j++ {
+			fmt.Scan(&a[j]) // Read arrival times
+		}
+
+		result := angryProfessor(k, a)
+		fmt.Println(result)
+	}
+}
