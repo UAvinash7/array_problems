@@ -53,3 +53,43 @@ Only two days, 20 and 22, in this interval are beautiful. Thus, we print 2 as ou
 
 // Solution
 
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+// reverseInt reverses the digits of an integer.
+func reverseInt(n int) int {
+	s := strconv.Itoa(n) // Convert integer to string
+	runes := []rune(s)   // Convert string to slice of runes
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i] // Swap characters
+	}
+	reversedString := string(runes)
+	reversedInt, _ := strconv.Atoi(reversedString) // Convert reversed string back to integer
+	return reversedInt
+}
+
+func beautifulDays(i int, j int, k int) int {
+	beautifulDayCount := 0
+	for day := i; day <= j; day++ {
+		reversedDay := reverseInt(day)
+		difference := day - reversedDay
+		if difference < 0 { // Take absolute difference
+			difference = -difference
+		}
+		if difference%k == 0 {
+			beautifulDayCount++
+		}
+	}
+	return beautifulDayCount
+}
+
+func main() {
+	var i, j, k int
+	fmt.Scan(&i, &j, &k) // Read i, j, and k from standard input
+	result := beautifulDays(i, j, k)
+	fmt.Println(result) // Print the number of beautiful days
+}
