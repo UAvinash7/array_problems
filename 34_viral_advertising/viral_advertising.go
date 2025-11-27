@@ -62,3 +62,30 @@ strange ad.png
 
 // Solution
 
+package main
+
+import "fmt"
+
+func viralAdvertising(n int) int {
+	shared := 5
+	liked := 0
+	cumulativeLiked := 0
+
+	for i := 0; i < n; i++ {
+		// Calculate people who liked the ad for the day
+		liked = shared / 2 // Integer division inherently handles floor
+		
+		// Add the current day's likes to the cumulative total
+		cumulativeLiked += liked
+		
+		// Calculate the number of people who will receive the ad the next day
+		shared = liked * 3
+	}
+	return cumulativeLiked
+}
+
+func main() {
+	// Example usage with 3 days
+	result := viralAdvertising(3)
+	fmt.Println(result) // Output: 9
+}
