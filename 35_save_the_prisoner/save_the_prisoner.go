@@ -82,4 +82,46 @@ In the second test case, there are n = 3 prisoners, m = 7 candies and they are p
 
 // Solution
 
- 
+ package main
+
+import (
+	"fmt"
+)
+
+// saveThePrisoner determines which prisoner receives the last sweet.
+func saveThePrisoner(n int32, m int32, s int32) int32 {
+	// Calculate the ending position using modular arithmetic.
+	// We use (s - 1) to convert the starting position to 0-based indexing.
+	// The total steps are (s - 1) + m.
+	// The modulo n handles the circular distribution.
+	// We add 1 back to convert the result back to 1-based indexing.
+	var result int32 = (s - 1 + m - 1) % n + 1
+	return result
+}
+
+func main() {
+	// Example usage
+	n := int32(4) // 4 prisoners
+	m := int32(6) // 6 sweets
+	s := int32(2) // start at chair 2
+
+	// Expected output: 3
+	// Distribution sequence: 2, 3, 4, 1, 2, 3
+	fmt.Printf("Number of prisoners: %d, sweets: %d, start: %d -> Last sweet to prisoner: %d\n", n, m, s, saveThePrisoner(n, m, s))
+
+	n2 := int32(7) // 7 prisoners
+	m2 := int32(19) // 19 sweets
+	s2 := int32(2) // start at chair 2
+
+	// Expected output: 6
+	// Distribution sequence: 2, 3, 4, 5, 6, 7, 1...
+	fmt.Printf("Number of prisoners: %d, sweets: %d, start: %d -> Last sweet to prisoner: %d\n", n2, m2, s2, saveThePrisoner(n2, m2, s2))
+
+	n3 := int32(3) // 3 prisoners
+	m3 := int32(7) // 7 sweets
+	s3 := int32(3) // start at chair 3
+
+	// Expected output: 2
+	// Distribution sequence: 3, 1, 2, 3, 1, 2, 3...
+	fmt.Printf("Number of prisoners: %d, sweets: %d, start: %d -> Last sweet to prisoner: %d\n", n3, m3, s3, saveThePrisoner(n3, m3, s3))
+}
