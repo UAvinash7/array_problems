@@ -77,3 +77,34 @@ Sample Output 1
 
 // Solution
 
+package main
+
+import (
+	"fmt"
+)
+
+// permutationEquation solves the Sequence Equation problem
+func permutationEquation(p []int) []int {
+	n := len(p)
+	pInverse := make([]int, n+1) // 1-based indexing for pInverse
+
+	// Create the inverse mapping
+	for i := 0; i < n; i++ {
+		pInverse[p[i]] = i + 1 // p[i] is the value, i+1 is the original index
+	}
+
+	result := make([]int, 0, n)
+	// Calculate y for each x
+	for x := 1; x <= n; x++ {
+		y := pInverse[pInverse[x]]
+		result = append(result, y)
+	}
+
+	return result
+}
+
+func main() {
+	p := []int{2, 3, 1} // Example input
+	output := permutationEquation(p)
+	fmt.Println(output) // Expected output: [1, 2, 3]
+}
