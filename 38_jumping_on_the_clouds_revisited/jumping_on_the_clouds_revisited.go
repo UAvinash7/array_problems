@@ -73,3 +73,40 @@ Observe that our thunderheads are the clouds numbered 2, 5, and 6. The character
 
 // Solution
 
+package main
+
+import "fmt"
+
+func jumpingOnClouds(c []int32, k int32) int32 {
+    energy := int32(100)
+    currentCloud := int32(0)
+    n := int32(len(c))
+
+    for {
+        // Calculate the next cloud index
+        currentCloud = (currentCloud + k) % n
+
+        // Decrease energy for the jump
+        energy -= 1
+
+        // If it's a thunderhead, decrease energy further
+        if c[currentCloud] == 1 {
+            energy -= 2
+        }
+
+        // Check if we've returned to the starting cloud
+        if currentCloud == 0 {
+            break
+        }
+    }
+
+    return energy
+}
+
+func main() {
+    // Example usage:
+    clouds := []int32{0, 0, 1, 0, 0, 1, 1, 0}
+    jumpDistance := int32(2)
+    remainingEnergy := jumpingOnClouds(clouds, jumpDistance)
+    fmt.Println(remainingEnergy) // Expected output: 92
+}
