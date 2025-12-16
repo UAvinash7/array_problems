@@ -93,3 +93,54 @@ To convert ashley to ash a minimum of 3 steps are needed. Hence we print No as a
 
 // Solution
 
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func appendAndDelete(s string, t string, k int32) string {
+	var commonLength int
+	// Find the length of the common prefix between s and t
+	for i := 0; i < int(math.Min(float64(len(s)), float64(len(t)))); i++ {
+		if s[i] == t[i] {
+			commonLength++
+		} else {
+			break
+		}
+	}
+
+	// Calculate the total operations needed (deletions from s + appends to t)
+	operationsNeeded := len(s) - commonLength + len(t) - commonLength
+
+	// Check the three conditions for "Yes"
+	if int(k) >= operationsNeeded && (int(k)-operationsNeeded)%2 == 0 {
+		// Case 1: k is sufficient, and the remaining operations can be performed in pairs (append/delete of same char)
+		return "Yes"
+	} else if int(k) >= len(s)+len(t) {
+		// Case 2: k is large enough to delete all characters of s and append all characters of t
+		return "Yes"
+	} else {
+		// Case 3: Otherwise, it's impossible in exactly k operations
+		return "No"
+	}
+}
+
+func main() {
+	// Example usage (HackerRank provides the main function and input parsing)
+	s := "hackerhappy"
+	t := "hackerrank"
+	k := int32(9)
+	fmt.Println(appendAndDelete(s, t, k)) // Output: Yes
+
+	s2 := "ashley"
+	t2 := "ash"
+	k2 := int32(2)
+	fmt.Println(appendAndDelete(s2, t2, k2)) // Output: No
+
+	s3 := "y"
+	t3 := "yu"
+	k3 := int32(2)
+	fmt.Println(appendAndDelete(s3, t3, k3)) // Output: No
+}
