@@ -71,3 +71,47 @@ Per the library's fee structure, we know that our fine will be 15 Hackos * (# da
 
 // Solution
 
+package main
+
+import (
+    "fmt"
+)
+
+// libraryFine calculates the fine based on the actual and expected return dates.
+func libraryFine(d1, m1, y1, d2, m2, y2 int) int {
+    // Check if the book was returned on or before the due date (no fine)
+    // The core logic is to check the most significant date component (year) first.
+    if y1 < y2 {
+        return 0
+    } else if y1 > y2 {
+        // Returned a year or more late (fixed fine)
+        return 10000
+    } else {
+        // Same year, now compare months
+        if m1 < m2 {
+            return 0
+        } else if m1 > m2 {
+            // Returned a month or more late (monthly fine)
+            return (m1 - m2) * 500
+        } else {
+            // Same year and month, now compare days
+            if d1 <= d2 {
+                return 0
+            } else {
+                // Returned some days late (daily fine)
+                return (d1 - d2) * 15
+            }
+        }
+    }
+}
+
+func main() {
+    // The HackerRank environment reads input from stdin.
+    // Assuming input format is two lines of "D M Y"
+    var d1, m1, y1, d2, m2, y2 int
+    fmt.Scanf("%d %d %d", &d1, &m1, &y1)
+    fmt.Scanf("%d %d %d", &d2, &m2, &y2)
+
+    fine := libraryFine(d1, m1, y1, d2, m2, y2)
+    fmt.Println(fine)
+}
