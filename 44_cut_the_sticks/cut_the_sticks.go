@@ -82,3 +82,48 @@ _ _ _ _ _ _ _ _       DONE            DONE
 
 // Solution
 
+package main
+
+import (
+    "fmt"
+    "sort"
+)
+
+// cutTheSticks function finds the number of sticks before each cut operation
+func cutTheSticks(arr []int32) []int32 {
+    // Sort the array of stick lengths in ascending order
+    sort.Slice(arr, func(i, j int) bool {
+        return arr[i] < arr[j]
+    })
+
+    var results []int32
+    n := int32(len(arr))
+    
+    // Iterate through the sorted array
+    for i := 0; i < int(n); {
+        // Record the number of sticks remaining before the current cut
+        results = append(results, n-int32(i))
+
+        // Find the length of the shortest remaining stick (which is the current one)
+        currentMin := arr[i]
+
+        // Find the next stick with a different length
+        for i < int(n) && arr[i] == currentMin {
+            i++
+        }
+    }
+
+    return results
+}
+
+func main() {
+    // Example Usage:
+    sticks := []int32{5, 4, 4, 2, 2, 8}
+    result := cutTheSticks(sticks)
+    fmt.Println(result) // Output: [6 4 2 1]
+
+    sticks2 := []int32{1, 2, 3, 4, 3, 2, 1}
+    result2 := cutTheSticks(sticks2)
+    fmt.Println(result2) // Output: [7 5 3 1]
+}
+
