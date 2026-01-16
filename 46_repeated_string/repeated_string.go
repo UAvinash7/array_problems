@@ -67,3 +67,40 @@ Because all of the first n = 1000000000000 letters of the infinite string are a,
 
 // Solution
 
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+// repeatedString calculates the number of 'a's in the first n characters of an infinite string s.
+func repeatedString(s string, n int64) int64 {
+	// Length of the original string
+	sLen := int64(len(s))
+
+	// Count the number of 'a's in the original string 's'
+	countInS := int64(strings.Count(s, "a"))
+
+	// Calculate how many full repetitions of 's' fit into 'n'
+	fullRepeats := n / sLen
+
+	// Calculate the number of characters remaining after the full repetitions
+	remainder := n % sLen
+
+	// Total count of 'a's from the full repetitions
+	totalAs := fullRepeats * countInS
+
+	// Count the 'a's in the remaining partial string
+	for i := int64(0); i < remainder; i++ {
+		if s[i] == 'a' {
+			totalAs++
+		}
+	}
+
+	return totalAs
+}
+
+func main() {
+	fmt.Println("Output:", repeatedString("aba", 10))
+}
