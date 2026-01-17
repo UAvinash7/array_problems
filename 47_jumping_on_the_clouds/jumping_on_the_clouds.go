@@ -72,3 +72,32 @@ jump(5).png
 
 // Solution
 
+package main
+
+import "fmt"
+
+// jumpingOnClouds finds the minimum number of jumps to reach the last cloud.
+func jumpingOnClouds(c []int32) int32 {
+	var jumps int32 = 0
+	i := 0
+	n := len(c)
+
+	for i < n-1 {
+		// Prioritize a jump of 2 steps if the target cloud is safe (0)
+		// and within the array bounds.
+		if i+2 < n && c[i+2] == 0 {
+			i += 2
+		} else {
+			// Otherwise, jump 1 step.
+			i += 1
+		}
+		jumps++
+	}
+
+	return jumps
+}
+
+func main() {
+	input := []int32 {0, 0, 1, 0, 0, 1, 0}
+	fmt.Println(jumpingOnClouds(input))
+}
